@@ -2,12 +2,19 @@
 // @compilation_level ADVANCED_OPTIMIZATIONS
 // @externs_url https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/jquery-1.9.js
 // ==/ClosureCompiler==
-/** @preserve    Written by Daniel Cohen Gindi (danielgindi@gmail.com)
-	https://github.com/danielgindi/jquery.with-hovers
-	v1.1.0
-    MIT License!
-*/
-(function($){
+/** @preserve jquery.with-hovers
+ * git://github.com/danielgindi/jquery.with-hovers.git
+ */
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define('jquery.with-hovers', ['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        module.exports = factory(require('jquery'));
+    } else {
+        /*root.withhovers = */factory(root.jQuery);
+    }
+}(this, function ($) {
+    'use strict';
 
     var touchDetected = null,
         timeout = null;
@@ -53,4 +60,4 @@
     $(window)
         .on('touchstart', touchStartHook);
 
-})(jQuery);
+}));
